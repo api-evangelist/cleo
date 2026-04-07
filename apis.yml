@@ -3,9 +3,9 @@ url: https://raw.githubusercontent.com/api-evangelist/cleo/refs/heads/main/apis.
 name: Cleo
 tags:
   - B2B
-  - Supply Chain
   - EDI
   - Integration
+  - Supply Chain
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
