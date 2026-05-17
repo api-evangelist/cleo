@@ -8,7 +8,7 @@ access: 3rd-Party
 position: Consumer
 specificationVersion: '0.19'
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-x-type: company
+kind: company
 tags:
   - AI
   - Banking
@@ -51,9 +51,9 @@ common:
     url: https://web.meetcleo.com/help
   - type: GitHub
     url: https://github.com/meetcleo
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://web.meetcleo.com/privacy
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://web.meetcleo.com/terms
 maintainers:
   - FN: Kin Lane
