@@ -43,6 +43,8 @@ artifacts:
       interacting with the AI assistant for budgeting, cash advances, and
       savings.
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/cleo-ai
   - type: Website
     url: https://web.meetcleo.com/
   - type: Blog
