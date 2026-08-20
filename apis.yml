@@ -21,6 +21,14 @@ specificationVersion: '0.23'
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/cleo.png
 kind: company
 tags:
+  - Artificial Intelligence
+  - Banking
+  - Budgeting
+  - Cash Advance
+  - Consumer Finance
+  - Financial Assistant
+  - Personal Finance
+tags_raw:
   - AI
   - Banking
   - Budgeting
