@@ -1,0 +1,35 @@
+generated: '2026-09-05'
+method: probed
+source: https://www.meetcleo.com/.well-known/oauth-authorization-server
+note: >-
+  Scopes read verbatim from the scopes_supported array of Cleo's published RFC 8414
+  Authorization Server Metadata document. Cleo publishes no scope reference page and no
+  OpenAPI, so no description text exists — the descriptions below are deliberately left
+  null rather than invented. The three scope strings themselves are exactly as Cleo
+  serves them.
+docs: null
+caveat: >-
+  This authorization server's authorization_endpoint redirects to an internal admin
+  sign-in (/admin_log_in). These are not scopes an outside developer can request; they
+  are recorded as published fact about Cleo's deployment.
+schemes:
+  - name: OAuth2
+    source: https://www.meetcleo.com/.well-known/oauth-authorization-server
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://www.meetcleo.com/oauth/authorize
+        tokenUrl: https://www.meetcleo.com/oauth/token
+scopes:
+  - scope: read
+    description: null
+    flows: [authorizationCode]
+    sources: ['https://www.meetcleo.com/.well-known/oauth-authorization-server']
+  - scope: 'write:create'
+    description: null
+    flows: [authorizationCode]
+    sources: ['https://www.meetcleo.com/.well-known/oauth-authorization-server']
+  - scope: 'write:delete'
+    description: null
+    flows: [authorizationCode]
+    sources: ['https://www.meetcleo.com/.well-known/oauth-authorization-server']
+scope_count: 3

@@ -1,0 +1,49 @@
+generated: '2026-09-05'
+method: searched
+source: >-
+  npm registry search and metadata (registry.npmjs.org), PyPI, RubyGems, and the
+  github.com/meetcleo public organisation (63 public repositories).
+note: >-
+  Cleo publishes ONE first-party package to a public registry, and it is not an API
+  client. No SDK pointer is emitted for this repo: sdk_count must mean "a client library
+  for this company's API", and Cleo has no public API to wrap.
+packages:
+  - language: javascript
+    registry: npm
+    name: '@meetcleo/design-tokens'
+    url: https://www.npmjs.com/package/@meetcleo/design-tokens
+    install: npm install @meetcleo/design-tokens
+    official: true
+    version: 0.1.4
+    published: '2026-08-26'
+    license: UNLICENSED
+    repository: https://github.com/meetcleo/cleonardo
+    kind: design-tokens
+    api_client: false
+    description: >-
+      Canonical source of truth for Cleo's design tokens (DTCG JSON), plus a TypeScript
+      reader. Published under Cleo's own @meetcleo npm scope from the cleonardo design
+      system repo, so first-party authorship is unambiguous.
+    note: >-
+      Single published version. Licensed UNLICENSED, i.e. published for Cleo's own
+      consumption rather than as a supported public dependency.
+searched_and_absent:
+  - registry: pypi
+    query: cleo-ai
+    result: 404
+    note: >-
+      The PyPI package named "cleo" is Sébastien Eustace's CLI framework and has no
+      relationship to this company. Not recorded.
+  - registry: rubygems
+    query: owners/meetcleo/gems.json
+    result: Owner could not be found
+    note: >-
+      github.com/meetcleo/homebrew-cleo is an internal Homebrew tap for Cleo's own
+      engineering formulae, not a distributed client library, and publishes no gem.
+  - registry: npm
+    query: meetcleo
+    result: one match, recorded above
+summary:
+  package_count: 1
+  official_count: 1
+  api_client_count: 0

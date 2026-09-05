@@ -1,0 +1,47 @@
+generated: '2026-09-05'
+method: probed
+source: >-
+  Live probes of meetcleo.statuspage.io, status.meetcleo.com and the Cleo web surface,
+  plus certificate-transparency enumeration of *.meetcleo.com.
+note: >-
+  Cleo publishes no API and therefore no API versioning, deprecation or sunset policy.
+  The one lifecycle signal worth recording is negative and specific: Cleo RESERVED an
+  Atlassian Statuspage and never turned it on.
+versioning:
+  scheme: null
+  current: null
+  docs: null
+  note: No public API, so no versioning scheme is published.
+deprecation:
+  policy_url: null
+  sunset_header: null
+  note: No deprecation or RFC 8594 Sunset policy is published.
+sla:
+  url: null
+  uptime_target: null
+status_page:
+  url: null
+  found: false
+  reserved_but_inactive: https://meetcleo.statuspage.io/
+  note: >-
+    meetcleo.statuspage.io resolves and returns HTTP 200, but it redirects to
+    /inactive and the page title is "meetcleo Status - Page Inactive". The Statuspage
+    API confirms it: GET https://meetcleo.statuspage.io/api/v2/summary.json returns
+    HTTP 401 "Your page is inactive." status.meetcleo.com does not resolve at all.
+    NO StatusPage pointer is emitted — a reserved-but-switched-off status page is not
+    a status page, and a naive 200 check would have credited one.
+deprecated_operations: []
+x-evidence:
+  - url: https://meetcleo.statuspage.io/
+    http_status: 200
+    effective_url: https://meetcleo.statuspage.io/inactive
+    title: meetcleo Status - Page Inactive
+    fetched: '2026-09-05'
+  - url: https://meetcleo.statuspage.io/api/v2/summary.json
+    http_status: 401
+    body: 'Your page is inactive. Please include an API key to access this resource.'
+    fetched: '2026-09-05'
+  - url: https://status.meetcleo.com/
+    http_status: 0
+    error: DNS NXDOMAIN
+    fetched: '2026-09-05'

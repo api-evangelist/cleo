@@ -1,0 +1,65 @@
+generated: '2026-09-05'
+method: probed
+source: https://www.meetcleo.com/.well-known/oauth-authorization-server
+note: >-
+  Only two standards can be asserted for Cleo, and both come from the single
+  machine-readable document the company publishes. Everything else is recorded as
+  conforms:false with the probe that established the absence. Cleo publishes no
+  OpenAPI, so no spec-content conformance can be derived.
+standards:
+  - id: rfc8414-oauth-authorization-server-metadata
+    conforms: true
+    evidence: >-
+      https://www.meetcleo.com/.well-known/oauth-authorization-server returns HTTP 200
+      application/json with issuer, authorization_endpoint, token_endpoint,
+      response_types_supported and scopes_supported at the RFC 8414 well-known path.
+  - id: oauth2
+    conforms: true
+    evidence: >-
+      grant_types_supported ["authorization_code","refresh_token"],
+      response_types_supported ["code"].
+  - id: rfc7636-pkce
+    conforms: true
+    evidence: code_challenge_methods_supported ["S256"].
+  - id: oidc
+    conforms: false
+    evidence: >-
+      /.well-known/openid-configuration returned 404 on meetcleo.com,
+      www.meetcleo.com and web.meetcleo.com.
+  - id: rfc7591-dynamic-client-registration
+    conforms: false
+    evidence: No registration_endpoint in the authorization server metadata.
+  - id: rfc9728-oauth-protected-resource
+    conforms: false
+    evidence: /.well-known/oauth-protected-resource returned 404 on every host probed.
+  - id: rfc9116-security-txt
+    conforms: false
+    evidence: >-
+      /.well-known/security.txt 404s on meetcleo.com, www.meetcleo.com and
+      web.meetcleo.com. The 200 on faqs.meetcleo.com is Intercom's document for
+      Intercom's own bug bounty, not Cleo's, and was rejected on ownership.
+  - id: openapi
+    conforms: false
+    evidence: >-
+      No OpenAPI/Swagger at /openapi.json, /openapi.yaml, /swagger.json, /api-docs on
+      any known host; api-docs.meetcleo.com 302s every path to Google Workspace SAML.
+  - id: apis-json
+    conforms: false
+    evidence: /apis.json, /apis.yml and /.well-known/apis.json all missed.
+  - id: a2a-agent-card
+    conforms: false
+    evidence: >-
+      /.well-known/agent-card.json and /.well-known/agent.json 404 on every Cleo-owned
+      host probed.
+  - id: mcp
+    conforms: false
+    evidence: No hosted MCP server found in search or on any probed host.
+domain_standards:
+  note: >-
+    REWARD-ONLY, and nothing is claimed. Cleo is a US/UK consumer personal-finance app.
+    Bank data reaches it through Plaid rather than through a contract Cleo publishes, so
+    no FDX, PSD2/OBIE, ISO 20022 or Open Banking signature appears in anything Cleo
+    serves. No domain standard is asserted, because asserting one would require a
+    contract this company does not publish.
+  candidates_checked: [fdx, psd2-obie, open-banking-uk, iso-20022]
+  found: []

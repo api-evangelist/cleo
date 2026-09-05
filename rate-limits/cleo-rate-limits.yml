@@ -1,0 +1,24 @@
+generated: '2026-09-05'
+method: probed
+source: >-
+  Absence established by probe — no public API, no reference documentation, and no
+  unauthenticated endpoint on which rate-limit response headers could be observed.
+note: >-
+  An honest zero. Cleo runs no third-party API, so there is nothing to rate limit from
+  an integrator's point of view and no RateLimits pointer is wired into apis.yml — a
+  file recording the absence of limits must not be scored as a published limits policy.
+  robots.txt on web.meetcleo.com disallows /api and /metrics; we honor that and did not
+  probe either path.
+limits: []
+limit_count: 0
+response_headers: []
+status_on_exhaustion: null
+x-evidence:
+  - url: https://web.meetcleo.com/robots.txt
+    http_status: 200
+    note: 'Disallow: /api and Disallow: /metrics — respected, not probed.'
+    fetched: '2026-09-05'
+  - url: https://api-docs.meetcleo.com/
+    http_status: 302
+    note: Redirects to Google Workspace SAML sign-in; no reference readable.
+    fetched: '2026-09-05'

@@ -1,0 +1,59 @@
+generated: '2026-09-05'
+method: searched
+source: https://web.meetcleo.com/pricing
+note: >-
+  These are CONSUMER SUBSCRIPTION tiers for the Cleo mobile app, not API plans — Cleo
+  sells no API. The pricing page exists and is indexed, but its body could not be read:
+  web.meetcleo.com sits behind a Cloudflare managed challenge (cf-mitigated: challenge)
+  that answers every non-well-known path with an interstitial. Tier NAMES below are
+  taken from indexed page content; PRICES are deliberately null rather than guessed,
+  because an invented subscription price is a factual claim about what a consumer is
+  charged.
+currency: USD
+billing_period: monthly
+plans:
+  - name: Cleo Plus
+    price: null
+    currency: USD
+    period: monthly
+    includes:
+      - Debt tracking
+      - Credit score insights
+      - Cash advance eligibility
+    note: Price not readable — pricing page behind a bot challenge.
+  - name: Cleo Pro
+    price: null
+    currency: USD
+    period: monthly
+    includes:
+      - Debt tracking
+      - Credit score insights
+      - Cash advance eligibility
+      - APY on savings
+      - AI guidance
+    note: Price not readable — pricing page behind a bot challenge.
+  - name: Cleo Builder
+    price: null
+    currency: USD
+    period: monthly
+    includes:
+      - Saving goals, hacks and challenges
+      - APY on savings
+      - Credit score insights
+      - Cash advance eligibility
+      - Credit history building
+      - Priority support
+    note: Price not readable — pricing page behind a bot challenge.
+plan_count: 3
+api_plan_count: 0
+api_plans_note: >-
+  Cleo publishes no API and therefore no API pricing, no free tier, no metered usage and
+  no overage schedule.
+x-evidence:
+  - url: https://web.meetcleo.com/pricing
+    http_status: 403
+    note: >-
+      Cloudflare managed challenge, not a missing page. robots.txt on the same host
+      returns 200 and allows /, and the page is indexed by search engines, so the page
+      demonstrably exists and only our crawler was turned away.
+    fetched: '2026-09-05'

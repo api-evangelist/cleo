@@ -1,0 +1,65 @@
+generated: '2026-09-05'
+method: probed
+source: https://www.meetcleo.com/.well-known/oauth-authorization-server
+note: >-
+  Cleo publishes no OpenAPI, so this profile is not derived from a spec. It is read
+  verbatim from the one machine-readable authorization document Cleo serves publicly:
+  an RFC 8414 OAuth 2.0 Authorization Server Metadata document at
+  https://www.meetcleo.com/.well-known/oauth-authorization-server (HTTP 200,
+  application/json, issuer https://www.meetcleo.com).
+scope_of_this_record: >-
+  IMPORTANT — this is NOT a third-party developer authorization surface. A GET of the
+  advertised authorization_endpoint (https://www.meetcleo.com/oauth/authorize) returns
+  302 to https://www.meetcleo.com/admin_log_in, an internal administrative sign-in.
+  Cleo runs no public developer program and issues no third-party API credentials, so
+  the metadata below documents an internal/administrative OAuth deployment that happens
+  to be discoverable at the standard well-known path. It is recorded because it is real
+  and published, not because it is callable by an outside integrator.
+summary:
+  types: [oauth2]
+  api_key_in: []
+  oauth2_flows: [authorizationCode, refreshToken]
+  public_client: true
+  pkce_required_methods: [S256]
+  dynamic_client_registration: false
+  openid_connect: false
+schemes:
+  - name: OAuth2
+    type: oauth2
+    issuer: https://www.meetcleo.com
+    source: https://www.meetcleo.com/.well-known/oauth-authorization-server
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://www.meetcleo.com/oauth/authorize
+        tokenUrl: https://www.meetcleo.com/oauth/token
+        scopes: [read, 'write:create', 'write:delete']
+      - flow: refreshToken
+        tokenUrl: https://www.meetcleo.com/oauth/token
+    token_endpoint_auth_methods_supported: [none]
+    code_challenge_methods_supported: [S256]
+    response_types_supported: [code]
+    grant_types_supported: [authorization_code, refresh_token]
+observations:
+  - >-
+    token_endpoint_auth_methods_supported is ["none"], which with PKCE S256 is the
+    public-client profile — the deployment expects clients that cannot hold a secret.
+  - >-
+    No registration_endpoint is advertised, so there is no RFC 7591 dynamic client
+    registration; clients must be provisioned out of band.
+  - >-
+    No /.well-known/openid-configuration is served (404 on every host probed), so this
+    is plain OAuth 2.0, not OpenID Connect.
+  - >-
+    No jwks_uri, introspection_endpoint or revocation_endpoint is advertised.
+x-evidence:
+  - url: https://www.meetcleo.com/.well-known/oauth-authorization-server
+    http_status: 200
+    content_type: application/json; charset=utf-8
+    fetched: '2026-09-05'
+  - url: https://www.meetcleo.com/oauth/authorize
+    http_status: 302
+    location: https://www.meetcleo.com/admin_log_in
+    fetched: '2026-09-05'
+  - url: https://www.meetcleo.com/.well-known/openid-configuration
+    http_status: 404
+    fetched: '2026-09-05'

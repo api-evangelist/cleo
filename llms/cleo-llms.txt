@@ -1,0 +1,50 @@
+# Cleo
+
+> Cleo is an AI-powered personal finance assistant delivered as a chat interface inside
+> iOS and Android apps. It helps consumers budget, track spending across linked bank
+> accounts, set savings goals, and reach features such as Cleo Wallet (savings), Cleo
+> Cover (cash advance) and Cleo Builder (credit building). Bank connectivity is
+> read-only and brokered through Plaid.
+
+## What an agent needs to know first
+
+Cleo publishes **no public API**. There is no OpenAPI, no GraphQL endpoint, no MCP
+server, no A2A agent card, no webhook catalogue and no developer portal an outside
+integrator can reach. Cleo is consumed as an end-user mobile product, not as a
+programmable service. Do not attempt to construct calls against it.
+
+Two things Cleo does serve publicly, and neither is an integration surface:
+
+- An RFC 8414 OAuth 2.0 Authorization Server Metadata document at
+  https://www.meetcleo.com/.well-known/oauth-authorization-server. Its
+  authorization_endpoint redirects to an internal admin sign-in, so it documents an
+  internal deployment, not third-party access.
+- An API-documentation host, https://api-docs.meetcleo.com, which redirects every path
+  to Google Workspace SAML sign-in. It is employee-only.
+
+## Product
+
+- [Cleo](https://web.meetcleo.com/): The world's first AI financial assistant — the marketing and account site.
+- [Plans and pricing](https://web.meetcleo.com/pricing): Cleo Plus, Cleo Pro and Cleo Builder consumer subscription tiers.
+- [Cleo Help Center](https://web.meetcleo.com/faqs/en/): Product FAQ and support articles.
+- [Blog](https://web.meetcleo.com/blog): Company and money-advice writing.
+
+## Apps
+
+- [iOS](https://apps.apple.com/us/app/cleo-ai-smart-money-manager/id1447274646): Cleo AI on the App Store.
+- [Android](https://play.google.com/store/apps/details?id=com.meetcleo.cleo): Cleo AI on Google Play, package com.meetcleo.cleo.
+
+## Policies
+
+- [Policies and agreements](https://web.meetcleo.com/page/cleo-policies-agreements): Hub for every Cleo agreement.
+- [Privacy policy](https://web.meetcleo.com/page/privacy-policy)
+- [Terms and conditions](https://web.meetcleo.com/page/term-conditions)
+
+## Engineering
+
+- [GitHub organisation](https://github.com/meetcleo): 63 public repositories — mostly forks of Ruby/Rails infrastructure gems, hiring exercises, and the `cleonardo` design system. No API contract is published here.
+- [@meetcleo/design-tokens](https://www.npmjs.com/package/@meetcleo/design-tokens): Cleo's DTCG design tokens, v0.1.4 (2026-08-26). First-party, but a design-system package, not an API client.
+
+## Optional
+
+- [API Evangelist profile for Cleo](https://apis.io/provider/cleo/): What this catalogue records about Cleo, including the probe evidence behind the "no public API" finding.

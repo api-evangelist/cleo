@@ -1,0 +1,184 @@
+generated: '2026-09-05'
+method: probed
+source: >-
+  Live probe of the /.well-known/ discovery surface on every host this record knows,
+  plus the subdomains recovered from certificate transparency (crt.sh %.meetcleo.com).
+note: >-
+  One real document was found: an RFC 8414 OAuth 2.0 Authorization Server Metadata
+  document served anonymously from www.meetcleo.com, whose issuer is Cleo's own
+  origin. Everything else missed. Two 200s were REJECTED on inspection and are
+  recorded below with the reason, because a status code alone is not a document.
+hosts:
+  - host: https://www.meetcleo.com
+    documents:
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        file: cleo-oauth-authorization-server.json
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/apis.json
+        status: 404
+      - path: /apis.json
+        status: 403
+      - path: /apis.yml
+        status: 403
+      - path: /.well-known/aauth-resource.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+    path_echo_control:
+      path: /.well-known/cleo-negative-control-7f3ab91c.json
+      status: 404
+      result: passed
+      note: >-
+        A path that cannot exist returned 404, so this host is not echoing the
+        requested path back as a validly-shaped document. The oauth-authorization-server
+        hit is therefore a real document, not a catch-all response.
+  - host: https://meetcleo.com
+    documents:
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        file: cleo-oauth-authorization-server.json
+        note: >-
+          Same document as the www host; meetcleo.com and www.meetcleo.com resolve to
+          the same Cloudflare-fronted origin. Saved once, not twice.
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /.well-known/apis.json
+        status: 404
+      - path: /apis.json
+        status: 403
+    path_echo_control:
+      path: /.well-known/cleo-negative-control-7f3ab91c.json
+      status: 404
+      result: passed
+  - host: https://web.meetcleo.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/apis.json
+        status: 404
+      - path: /apis.json
+        status: 403
+      - path: /apis.yml
+        status: 403
+      - path: /.well-known/aauth-resource.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /llms.txt
+        status: 404
+    path_echo_control:
+      path: /.well-known/cleo-negative-control-7f3ab91c.json
+      status: 404
+      result: passed
+    note: >-
+      The marketing/app host answers /.well-known/* with a 945KB Next.js 404 page and
+      answers every other path with a Cloudflare managed challenge (cf-mitigated:
+      challenge). Its robots.txt is served (200), allows /, and names a sitemap, so the
+      site is real and only automated clients are turned away.
+  - host: https://api-docs.meetcleo.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 302
+      - path: /.well-known/agent-card.json
+        status: 302
+      - path: /openapi.json
+        status: 302
+      - path: /swagger.json
+        status: 302
+      - path: /openapi.yaml
+        status: 302
+      - path: /api-docs
+        status: 302
+    note: >-
+      Cleo's API-documentation host, served from CloudFront. EVERY path — including the
+      well-known surface — 302s to accounts.google.com/o/saml2/idp?idpid=C01b9mfo5, a
+      Google Workspace SAML sign-in. Nothing is readable without an employee identity.
+  - host: https://webhooks.meetcleo.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /openapi.json
+        status: 403
+    note: >-
+      Host exists (certificate transparency) and answers, but publishes no discovery
+      document. Root is behind the same Cloudflare managed challenge.
+  - host: https://faqs.meetcleo.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        rejected: true
+        reason: third-party-document
+        note: >-
+          OWNERSHIP REJECT. The document is Intercom's, not Cleo's — it reads
+          "# Intercom - reporting security vulnerabilities to Intercom",
+          Contact: https://bugcrowd.com/intercom and mailto:security@intercom.com.
+          faqs.meetcleo.com is a vendor-hosted Intercom help centre on a Cleo CNAME,
+          so the security.txt describes Intercom's disclosure programme, not Cleo's.
+          NOT saved, and no SecurityTxt or Security pointer was emitted from it.
+      - path: /.well-known/agent-card.json
+        status: 200
+        rejected: true
+        reason: html-soft-404
+        note: 55KB text/html Intercom app shell, not a JSON AgentCard.
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        rejected: true
+        reason: html-soft-404
+      - path: /.well-known/apis.json
+        status: 200
+        rejected: true
+        reason: html-soft-404
+    path_echo_control:
+      path: /.well-known/cleo-negative-control-7f3ab91c.json
+      status: 200
+      result: failed
+      bytes: 55341
+      content_type: text/html
+      note: >-
+        This host answers 200 with the same 55KB HTML shell for a path that cannot
+        exist, so every HTML 200 on it is discarded. The text/plain security.txt is a
+        genuinely distinct response, but it belongs to Intercom and is rejected on
+        ownership rather than on shape.
+hit_count: 1
+summary:
+  real_documents: 1
+  types_found: [oauth-authorization-server]
+  security_txt: false
+  agent_card: false
+  api_catalog: false
+  apis_json: false
+  aauth: false

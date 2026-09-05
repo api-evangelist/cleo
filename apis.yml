@@ -24,7 +24,7 @@ accessModel:
   generated: '2026-07-22'
   method: derived
 created: '2025-03-01'
-modified: '2026-04-26'
+modified: '2026-09-05'
 type: Index
 access: 3rd-Party
 position: Consuming
@@ -82,13 +82,38 @@ common:
   - type: Blog
     url: https://web.meetcleo.com/blog
   - type: Help Center
-    url: https://web.meetcleo.com/help
-  - type: GitHub
-    url: https://github.com/meetcleo
+    url: https://web.meetcleo.com/faqs/en/
+  - type: Support
+    url: https://web.meetcleo.com/faqs/en/
   - type: PrivacyPolicy
-    url: https://web.meetcleo.com/privacy
+    url: https://web.meetcleo.com/page/privacy-policy
   - type: TermsOfService
-    url: https://web.meetcleo.com/terms
+    url: https://web.meetcleo.com/page/term-conditions
+  - type: Pricing
+    url: https://web.meetcleo.com/pricing
+  - type: GitHubOrganization
+    url: https://github.com/meetcleo
+  - type: WellKnown
+    url: well-known/cleo-well-known.yml
+  - type: Authentication
+    url: authentication/cleo-authentication.yml
+  - type: OAuthScopes
+    url: scopes/cleo-scopes.yml
+  - type: Conformance
+    url: conformance/cleo-conformance.yml
+  - type: Packages
+    url: packages/cleo-packages.yml
+  - type: Lifecycle
+    url: lifecycle/cleo-lifecycle.yml
+  - type: Plans
+    url: plans/cleo-plans-pricing.yml
+  - type: LLMsTxt
+    url: llms/cleo-llms.txt
 maintainers:
   - FN: Kin Lane
     email: kinlane@gmail.com
+x-enrichment:
+  date: '2026-09-05'
+  status: enriched
+  artifacts_added: 10
+  pass: local-v3
