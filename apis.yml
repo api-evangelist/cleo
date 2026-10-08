@@ -73,6 +73,8 @@ artifacts:
       interacting with the AI assistant for budgeting, cash advances, and
       savings.
 common:
+  - type: RateLimits
+    url: rate-limits/cleo-rate-limits.yml
   - type: DomainSecurity
     url: security/cleo-domain-security.yml
   - type: LinkedIn
