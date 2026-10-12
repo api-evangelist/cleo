@@ -1,5 +1,5 @@
 generated: '2026-10-12'
-method: none
+method: searched
 source:
 - https://zapier.com/apps/cleo/integrations
 - https://n8n.io/integrations/cleo/
@@ -9,8 +9,26 @@ checked:
 - https://composio.dev/toolkits/cleo
 - https://monid.ai/tools/cleo
 - https://n8n.io/integrations/cleo/
+- https://www.openbanking.org.uk/regulated-providers/cleo-ai-ltd/
 - https://zapier.com/apps/cleo/integrations
 summary: null
 marketplace_apps: []
-edges: []
+edges:
+- partner_name: UK Open Banking
+  partner: null
+  type: contract
+  channel: regulator-register
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.openbanking.org.uk/regulated-providers/cleo-ai-ltd/
+  contract_reference:
+    register: UK Open Banking regulated providers (OBL directory)
+    spec_file: null
+    role: Third Party Providers
+    registered_name: Cleo AI Ltd
+    register_id: https://register.fca.org.uk/s/firm?id=0010X000049MB07QAG
+    matched_domain: meetcleo.com
+    api_families: null
+    detected_by: sweep-standard-registers.py
+    detected: '2026-10-12'
 templates: []
